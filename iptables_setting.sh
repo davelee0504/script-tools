@@ -100,9 +100,9 @@ $ipt -A INPUT -i eth0 -p tcp --destination-port 443 -j ACCEPT
 ### Open up for pptpd service
 ###############################################################
 
-iptables -A INPUT -p tcp -m tcp --dport 1723 -j ACCEPT
-iptables -A INPUT -p gre -j ACCEPT
-iptables -t nat -A POSTROUTING -s 192.168.240.0/24 -o eth0 -j MASQUERADE
+$ipt -A INPUT -p tcp -m tcp --dport 1723 -j ACCEPT
+$ipt -A INPUT -p gre -j ACCEPT
+$ipt -t nat -A POSTROUTING -s 192.168.240.0/24 -o eth0 -j MASQUERADE
  
 ###############################################################
 ### drop the scan type packets. No need for that type of behaviour
